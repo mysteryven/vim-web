@@ -1,19 +1,28 @@
-set tabstop=2       " number of visual spaces per TAB
-set softtabstop=2   " number of spaces in tab when editing
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
 set expandtab       " tabs are spaces
 set number     
 set showcmd     
 set wildmenu            " visual autocomplete for command menu
 set hlsearch            " highlight matches
 set showmatch           " highlight matching [{()}]
-set shiftwidth=2 
+set shiftwidth=4 
 syntax on
 set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set cursorline " 突出显示当前行
 set laststatus=2 "显示状态栏
+filetype indent on  
+autocmd FileType coffee,erb,html,css,scss,rb setlocal foldmethod=indent
+set smartindent       
 syntax enable
-
+set shortmess+=A
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"
+let NERDTreeMapOpenInTab='<ENTER>'
 " tab
 map <leader>1 :b 1<cr>
 map <leader>2 :b 2<cr>
@@ -69,4 +78,3 @@ set statusline=%F%m%r\ \|\ %{&ff},%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+b
                             " %p    当前行占总行数的百分比
                             " %%    百分号
                             " %L    当前文件总行数
-:
